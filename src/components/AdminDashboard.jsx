@@ -110,6 +110,7 @@ const AdminDashboard = () => {
                 <th>Hora</th>
                 <th>Codigo Cliente</th>
                 <th>Nombre Cliente</th>
+                <th>Observacion</th>
                 <th>Ubicación</th>
               </tr>
             </thead>
@@ -120,6 +121,7 @@ const AdminDashboard = () => {
                   <td>{visita.hora}</td>
                   <td>{visita.clienteCodigo}</td>
                   <td>{visita.clienteNombre}</td> 
+                  <td>{visita.observacion}</td> 
                   <td>
                     <a
                       href={`https://www.google.com/maps?q=${visita.latitud},${visita.longitud}`}

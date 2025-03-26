@@ -7,6 +7,7 @@ const VendedorDashboard = () => {
   const navigate = useNavigate();
   const [cliente, setCliente] = useState("");
   const [clienteCodigo, setClienteCodigo] = useState(""); // Almacenar el código del cliente
+  const [observacion, setObservacion] = useState(""); // Almacenar el código del cliente
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showSearchPanel, setShowSearchPanel] = useState(false);
@@ -25,20 +26,21 @@ const VendedorDashboard = () => {
 
   // Obtener la fecha y hora actual en Bogotá (formato dd/mm/yyyy y 24 horas)
   const getCurrentDateTime = () => {
-    const date = new Date().toLocaleString("es-CO", {
-      timeZone: "America/Bogota",
-      hour12: false,
-    });
-
-    const [dateString, timeString] = date.split(", ");
-    const [day, month, year] = dateString.split("/");
-    const [hour, minute] = timeString.split(":");
-
+    const now = new Date();
+    
+    const day = now.getDate().toString().padStart(2, "0");
+    const month = (now.getMonth() + 1).toString().padStart(2, "0"); // getMonth() devuelve 0-11, sumamos 1
+    const year = now.getFullYear();
+    
+    const hour = now.getHours().toString().padStart(2, "0");
+    const minute = now.getMinutes().toString().padStart(2, "0");
+  
     return {
       fecha: `${day}/${month}/${year}`,
       hora: `${hour}:${minute}`,
     };
   };
+  
 
   // Función para obtener latitud y longitud usando la geolocalización
   const getLocation = () => {
@@ -118,6 +120,7 @@ const VendedorDashboard = () => {
         latitud: location.lat,
         longitud: location.lon,
         vendedor: localStorage.getItem("username"),
+        observacion: observacion
       };
 
       console.log("Datos a enviar:", requestData);
@@ -143,6 +146,7 @@ const VendedorDashboard = () => {
         // Limpiar los campos después de guardar el cliente
         setCliente(""); // Limpiar el nombre del cliente
         setClienteCodigo(""); // Limpiar el código del cliente
+        setObservacion(""); // Limpiar el código del cliente
         setVisitSaved(true); // Marcar que la visita fue guardada
       } else {
         setError(data.message || "Hubo un error al guardar el cliente.");
@@ -179,6 +183,18 @@ const VendedorDashboard = () => {
                 🔍
               </button>
             </div>
+          </div>
+
+          <div className="input-container">
+            <label htmlFor="cliente">Observacion</label>
+            <input
+                type="text"
+                id="Observacion"
+                value={observacion}
+                onChange={(e) => setObservacion(e.target.value)}
+                name= "Observacion"
+                className="input-field-obs"
+              />
           </div>
 
           {/* Input oculto para enviar el código del cliente */}
