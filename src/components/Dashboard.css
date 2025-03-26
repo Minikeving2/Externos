@@ -1,0 +1,107 @@
+/* src/components/Dashboard.css */
+
+/* Variables comunes */
+:root {
+  --color-background: #f9f9f9;
+  --color-text: #333;
+  --color-error: red;
+  --color-button: #007bff;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--color-background);
+  margin: 0;
+  padding: 0;
+  color: var(--color-text);
+  height: 100vh;
+  display: block;
+  text-align: center;
+}
+
+/* Contenedor principal de la página */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+/* Estilo del contenedor de contenido principal */
+.dashboard-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Estilo del formulario */
+.client-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Estilo de los campos de entrada */
+.input-field {
+  padding: 10px;
+  font-size: 1rem;
+  margin-top: 5px;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  width: 80%;
+}
+
+/* Estilo de la fila que contiene el input y el botón */
+.input-with-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Estilo del botón de búsqueda */
+.search-button {
+  background-color: var(--color-button);
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+/* Modal - Fondo oscuro */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  z-index: 1040 !important;
+}
+
+/* Modal - Centrado */
+.modal-dialog-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 600px) {
+  .dashboard-title {
+    font-size: 1.5rem;
+  }
+
+  .dashboard-content {
+    padding: 15px;
+  }
+}
